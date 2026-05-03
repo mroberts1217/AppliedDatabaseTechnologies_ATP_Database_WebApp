@@ -11,10 +11,10 @@ A Flask based web application that allows users to explore ATP tennis match data
 - Preview player match histories and player profile
 
 ### Tournament Pages
--Tournament overview with matches played and includes data on the tournament (year, surface, etc.)
+- Tournament overview with matches played and includes data on the tournament (year, surface, etc.)
 
 ### Head to head comparison page
--allows users to query a head to head record between two players with filters
+- allows users to query a head to head record between two players with filters
 - displays a bar chart visualization
 
 ### Match Detail Page
@@ -26,3 +26,6 @@ A Flask based web application that allows users to explore ATP tennis match data
 - a virtual environment should be ran and the dependencies installed
 - run the flask app and the application will run locally
 - Deployed via Python Anywhere as well
+
+## Live Deployment Link
+https://mroberts1217.pythonanywhere.com/ 
