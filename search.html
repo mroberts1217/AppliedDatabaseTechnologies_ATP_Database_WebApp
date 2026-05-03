@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="mb-3">Search Matches</h2>
+
+<form method="get" class="row g-3 mb-4">
+
+    <div class="col-md-3">
+        <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Player name">
+    </div>
+
+    <div class="col-md-3">
+        <input type="text" name="tournament" value="{{ tournament }}" class="form-control" placeholder="Tournament name">
+    </div>
+
+    <div class="col-md-2">
+        <select name="surface" class="form-select">
+            <option value="">Surface</option>
+            <option value="Hard">Hard</option>
+            <option value="Clay">Clay</option>
+            <option value="Grass">Grass</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <select name="level" class="form-select">
+            <option value="">Level</option>
+            <option value="G">Grand Slam</option>
+            <option value="M">Masters 1000</option>
+            <option value="A">ATP 500</option>
+            <option value="C">ATP 250</option>
+            <option value="F">Tour Finals</option>
+            <option value="D">Davis Cup</option>
+        </select>
+    </div>
+
+<div class="col-md-2">
+    <select name="round" class="form-select">
+        <option value="">Round</option>
+        <option value="RR">Round Robin</option>
+        <option value="R128">R128</option>
+        <option value="R64">R64</option>
+        <option value="R32">R32</option>
+        <option value="R16">R16</option>
+        <option value="QF">QF</option>
+        <option value="SF">SF</option>
+        <option value="F">Final</option>
+    </select>
+</div>
+
+
+
+    <div class="col-md-1">
+        <input type="text" name="year" value="{{ year }}" class="form-control" placeholder="Year">
+    </div>
+
+    <div class="col-md-1">
+        <button class="btn btn-primary w-100">Go</button>
+    </div>
+
+</form>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Tournament</th>
+            <th>Surface</th>
+            <th>Level</th>
+            <th>Year</th>
+            <th>Winner</th>
+            <th>Loser</th>
+            <th>Score</th>
+            <th>Round</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for m in matches %}
+        <tr>
+            <td><a href="/tournament/{{ m.tourney_id }}">{{ m.tourney_name }}</a></td>
+            <td>{{ m.surface }}</td>
+            <td>{{ m.tourney_level }}</td>
+            <td>{{ m.year }}</td>
+            <td><a href="/player/{{ m.winner_id }}">{{ m.winner_name }}</a></td>
+            <td><a href="/player/{{ m.loser_id }}">{{ m.loser_name }}</a></td>
+            <td><a href="/match/{{ m.match_id }}">{{ m.score }}</a></td>
+            <td>{{ m.round }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
